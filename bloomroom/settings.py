@@ -11,9 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(+u&p6ijqwwpq5g)dybh#p8533-%&oo79yf!d44$w7&ph(yg9f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =True
+DEBUG =False
 
-ALLOWED_HOSTS =['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS =['bloomroom.azurewebsites.net']
 
 
 # Application definition
@@ -40,6 +40,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'bloomroom.urls'
@@ -117,12 +118,15 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/images/'
 
+STATICFILES_STORAGE='whitenoise.storgae.CompressesManifestStaticFilesStorage'
+
 MEDIA_ROOT= Path.joinpath(BASE_DIR , 'static/images') 
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
