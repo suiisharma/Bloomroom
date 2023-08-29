@@ -1,6 +1,5 @@
 from pathlib import Path
 import dj_database_url
-import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -72,8 +71,9 @@ WSGI_APPLICATION = 'bloomroom.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
-'default':    'default': dj_database_url.config(default='postgres://blomroompg_user:x6SzfRAHkvzXcFv36wGArG3zH1l2Gpg6@dpg-cjmrvkdhe99c73dlj4kg-a/blomroompg',conn_max_age=600    ),
+	"default": dj_database_url.parse('postgres://blomroompg_user:x6SzfRAHkvzXcFv36wGArG3zH1l2Gpg6@dpg-cjmrvkdhe99c73dlj4kg-a.oregon-postgres.render.com/blomroompg')
 }
 
 AUTH_USER_MODEL = 'base.User'
