@@ -77,6 +77,7 @@ def room(request, pk):
     comments = room.message_set.all()
     participants = room.participants.all()
     if (request.method == 'POST'):
+        @login_required(login_url='login')
         Message.objects.create(
             user=request.user,
             room=room,
