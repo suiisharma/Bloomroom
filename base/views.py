@@ -84,7 +84,6 @@ def room(request, pk):
                 body=request.POST.get('body')
             )
             room.participants.add(request.user)
-            return redirect('room', pk=room.id)
         else:
             messages.error(request, 'Login first');
             return redirect('login')
