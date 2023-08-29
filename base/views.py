@@ -78,6 +78,7 @@ def room(request, pk):
     participants = room.participants.all()
     if (request.method == 'POST'):
         if(not request.user):
+            messages.error(request, 'Login first')
             return redirect('login')
         Message.objects.create(
             user=request.user,
