@@ -76,23 +76,19 @@ def room(request, pk):
     room = Room.objects.get(id=pk)
     comments = room.message_set.all()
     participants = room.participants.all()
-    if (request.method == 'POST') :
-        if 'user' in request:
-            Message.objects.create(
-                user=request.user,
-                room=room,
-                body=request.POST.get('body')
-            )
-            room.participants.add(request.user)
-            return redirect('room', pk=room.id)
-        else:
-            messages.error(request, 'Login first');
+    if (request.method == 'POST'):
+        if 'user' not in request.user:
             return redirect('login')
-    
-    else :
-        context = {'room': room, 'comments': comments,
+        Message.objects.create(
+            user=request.user,
+            room=room,
+            body=request.POST.get('body')
+        )
+        room.participants.add(request.user)
+        return redirect('room', pk=room.id)
+    context = {'room': room, 'comments': comments,
                'participants': participants}
-        return render(request, 'base/room.html', context)
+    return render(request, 'base/room.html', context)
 
 
 def userProfile(request, pk):
