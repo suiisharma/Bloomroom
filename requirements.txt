@@ -11,3 +11,4 @@ psycopg2 ==2.9.5
 dj-database-url==1.2.0
 whitenoise==6.2.0
 Brotli==1.0.9
+django-environ==0.10.0 
