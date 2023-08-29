@@ -84,12 +84,15 @@ def room(request, pk):
                 body=request.POST.get('body')
             )
             room.participants.add(request.user)
+            return redirect('room', pk=room.id)
         else:
             messages.error(request, 'Login first');
             return redirect('login')
-    context = {'room': room, 'comments': comments,
+    
+    else :
+        context = {'room': room, 'comments': comments,
                'participants': participants}
-    return render(request, 'base/room.html', context)
+        return render(request, 'base/room.html', context)
 
 
 def userProfile(request, pk):
