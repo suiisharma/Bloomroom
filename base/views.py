@@ -72,11 +72,12 @@ def home(request):
     return render(request, 'base/home.html', context)
 
 
+@login_required(login_url='login')
 def room(request, pk):
     room = Room.objects.get(id=pk)
     comments = room.message_set.all()
     participants = room.participants.all()
-    if (request.method == 'POST'):
+    if (request.method == 'POST') :
         Message.objects.create(
             user=request.user,
             room=room,
@@ -84,9 +85,11 @@ def room(request, pk):
         )
         room.participants.add(request.user)
         return redirect('room', pk=room.id)
+            
     context = {'room': room, 'comments': comments,
                'participants': participants}
     return render(request, 'base/room.html', context)
+
 
 
 def userProfile(request, pk):
