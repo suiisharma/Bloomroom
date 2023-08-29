@@ -77,9 +77,8 @@ def room(request, pk):
     comments = room.message_set.all()
     participants = room.participants.all()
     if (request.method == 'POST'):
-        if(!request.user){    
-        return render(request, 'base/home.html', context)
-        }
+        if(not request.user):
+            return redirect('login')
         Message.objects.create(
             user=request.user,
             room=room,
