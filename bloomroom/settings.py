@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'bloomroom.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-'default':dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=6000),
+'default':    'default': dj_database_url.config(default='postgres://blomroompg_user:x6SzfRAHkvzXcFv36wGArG3zH1l2Gpg6@dpg-cjmrvkdhe99c73dlj4kg-a/blomroompg',conn_max_age=600    ),
 }
 
 AUTH_USER_MODEL = 'base.User'
