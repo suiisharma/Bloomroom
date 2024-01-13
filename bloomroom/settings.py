@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'bloomroom.wsgi.application'
 
 
 DATABASES = {
-	"default": dj_database_url.parse('postgres://sourav:CWRThq67OnffsTdAF4AuGXJuwSNqmgdo@dpg-cjmvsn7jbvhs738j8ml0-a.singapore-postgres.render.com/bloomroom_3kml')
+	"default": dj_database_url.parse('postgresql://postgres:eC5ddEeCc1E*-gF2g*AF4B-F4*D12gca@viaduct.proxy.rlwy.net:50066/railway')
 }
 
 AUTH_USER_MODEL = 'base.User'
